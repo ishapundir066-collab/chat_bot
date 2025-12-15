@@ -1,0 +1,229 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Coding Challenge Bot</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    .fade-in {
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .assistant-icon {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .assistant-icon:hover {
+      transform: scale(1.1);
+    }
+    .question-container {
+      max-height: 500px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #4B5563 #1F2937;
+    }
+    .question-container::-webkit-scrollbar {
+      width: 8px;
+    }
+    .question-container::-webkit-scrollbar-track {
+      background: #1F2937;
+      border-radius: 4px;
+    }
+    .question-container::-webkit-scrollbar-thumb {
+      background: #4B5563;
+      border-radius: 4px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      background: #1F2937;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin: 1rem 0;
+      overflow-x: auto;
+    }
+    code {
+      font-family: monospace;
+      color: #E5E7EB;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen flex items-center justify-center p-4">
+  
+  <a href="assistant2.html" class="assistant-icon bg-blue-600 p-3 rounded-full shadow-lg hover:bg-blue-700 transition-colors" target="_blank">
+    <i class="fas fa-robot text-2xl"></i>
+  </a>
+
+  <div class="w-full max-w-4xl p-6 bg-gray-800 rounded-xl shadow-lg space-y-6 fade-in">
+    <h1 class="text-3xl font-bold text-center">⚡ Coding Challenge Bot</h1>
+
+
+
+    <div class=" flex flex-wrap justify-center">
+      <select id="" class="text-black p-2 rounded text-lg min-w-[200px]">
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+      </select>
+    </div>
+    
+    <div class="flex flex-wrap gap-4 justify-center">
+      <select id="topic" class="text-black p-2 rounded text-lg min-w-[200px]">
+        <option value="" disabled selected>Choose Topic</option>
+        <option value="arrays">Arrays</option>
+        <option value="strings">Strings</option>
+        <option value="recursion">Recursion</option>
+        <option value="sorting">Sorting</option>
+        <option value="linkedlist">Linked Lists</option>
+        <option value="trees">Trees</option>
+        <option value="graphs">Graphs</option>
+        <option value="dynamic">Dynamic Programming</option>
+      </select>
+      <button onclick="getNextQuestion()" class="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded transition text-lg">Get Question</button>
+    </div>
+
+    <div class="question-container">
+      <div id="question" class="p-4 bg-gray-700 rounded min-h-[100px] fade-in">
+        Select a topic and click "Get Question" to start.
+      </div>
+    </div>
+
+    <textarea 
+      id="answer" 
+      rows="6" 
+      placeholder="Write your answer here..." 
+      class="w-full p-3 text-white bg-gray-700 rounded mt-2 font-mono"
+    ></textarea>
+
+    <div class="flex gap-4 justify-center">
+      <button onclick="checkAnswer()" class="bg-green-600 hover:bg-green-700 px-6 py-2 rounded text-lg">Check Answer</button>
+      <button onclick="showSolution()" class="bg-yellow-500 hover:bg-yellow-600 px-6 py-2 rounded text-lg">Show Solution</button>
+    </div>
+
+    <div id="response" class="question-container p-4 bg-gray-700 rounded hidden mt-2 fade-in"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Coding Challenge Bot</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    .fade-in {
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .assistant-icon {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .assistant-icon:hover {
+      transform: scale(1.1);
+    }
+    .question-container {
+      max-height: 500px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #4B5563 #1F2937;
+    }
+    .question-container::-webkit-scrollbar {
+      width: 8px;
+    }
+    .question-container::-webkit-scrollbar-track {
+      background: #1F2937;
+      border-radius: 4px;
+    }
+    .question-container::-webkit-scrollbar-thumb {
+      background: #4B5563;
+      border-radius: 4px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      background: #1F2937;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin: 1rem 0;
+      overflow-x: auto;
+    }
+    code {
+      font-family: monospace;
+      color: #E5E7EB;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen flex items-center justify-center p-4">
+  <!-- AI Assistant Icon -->
+  <a href="assistant2.html" class="assistant-icon bg-blue-600 p-3 rounded-full shadow-lg hover:bg-blue-700 transition-colors" target="_blank">
+    <i class="fas fa-robot text-2xl"></i>
+  </a>
+  <div class="w-full max-w-4xl p-6 bg-gray-800 rounded-xl shadow-lg space-y-6 fade-in">
+    <h1 class="text-3xl font-bold text-center">⚡ Coding Challenge Bot</h1>
+    <div class=" flex flex-wrap justify-center">
+      <select id="difficulty" class="text-black p-2 rounded text-lg min-w-[200px]">
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+      </select>
+    </div>
+   
+    <div class="flex flex-wrap gap-4 justify-center">
+      <select id="topic" class="text-black p-2 rounded text-lg min-w-[200px]">
+        <option value="" disabled selected>Choose Topic</option>
+        <option value="arrays">Arrays</option>
+        <option value="strings">Strings</option>
+        <option value="recursion">Recursion</option>
+        <option value="sorting">Sorting</option>
+        <option value="linkedlist">Linked Lists</option>
+        <option value="trees">Trees</option>
+        <option value="graphs">Graphs</option>
+        <option value="dynamic">Dynamic Programming</option>
+      </select>
+      <button onclick="getNextQuestion()" class="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded transition text-lg">Get Question</button>
+    </div>
+    <div class="question-container">
+      <div id="question" class="p-4 bg-gray-700 rounded min-h-[100px] fade-in">
+        Select a topic and click "Get Question" to start.
+      </div>
+    </div>
+    <textarea
+      id="answer"
+      rows="6"
+      placeholder="Write your answer here..."
+      class="w-full p-3 text-white bg-gray-700 rounded mt-2 font-mono"
+    ></textarea>
+    <div class="flex gap-4 justify-center">
+      <button onclick="checkAnswer()" class="bg-green-600 hover:bg-green-700 px-6 py-2 rounded text-lg">Check Answer</button>
+      <button onclick="showSolution()" class="bg-yellow-500 hover:bg-yellow-600 px-6 py-2 rounded text-lg">Show Solution</button>
+    </div>
+    <div id="response" class="question-container p-4 bg-gray-700 rounded hidden mt-2 fade-in"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
